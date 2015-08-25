@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script src="jquery.mouseoutall.js"></script>
+		<style>
+		.box {
+			width: 150px;
+			height: 150px;
+			float: left;
+		}
+		pre {
+			clear: both;
+		}
+		</style>
+	</head>
+	<body>
+		<script>
+		$(function()
+		{
+			var log = $('.log');
+			$('.box').mouseoutall(function()
+			{
+				log.text(log.text() + '\nmouseoutall!');
+			});
+		});
+		</script>
+		<div class="box" style="background-color:indianred;">
+		</div>
+		<div class="box" style="background-color:yellowgreen;">
+		</div>
+		<pre class="log"></pre>
+	</body>
+</html>
