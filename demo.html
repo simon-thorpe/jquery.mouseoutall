@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+		<script src="jquery.mouseoutall.js"></script>
+		<style>
+		body {
+			font-size: 12px;
+			font-family: sans-serif;
+			color: #333;
+		}
+		.group {
+			margin-bottom: 20px;
+		}
+		.clear {
+			clear: both;
+		}
+		.box {
+			width: 100px;
+			height: 100px;
+			float: left;
+			transition: -webkit-filter 200ms, filter 200ms;
+		}
+		.box: hover {
+			-webkit-filter: brightness(110%);
+			filter: brightness(110%);
+		}
+		.gap {
+			width: 50px;
+			height: 100px;
+			float: left;
+		}
+		.log {
+			clear: both;
+			height: 100px;
+			border: 1px solid #aaa;
+			padding: 0;
+			margin: 10px 0 40px;
+		}
+		</style>
+	</head>
+	<body>
+		<script>
+		$(function()
+		{
+			$('.instant .box').mouseoutall(function()
+			{
+				$('.instant .log').text($('.instant .log').text() + 'Fire! ');
+			});
+			$('.delayed .box').mouseoutall(1000, function()
+			{
+				$('.delayed .log').text($('.delayed .log').text() + 'Fire! ');
+			});
+		});
+		</script>
+		<p>Example 1: Roll the mouse over both these div's and the callback will fire only when the mouse has left both.</p>
+		<div class="example instant">
+			<div class="box" style="background-color:indianred;">
+			</div>
+			<div class="box" style="background-color:yellowgreen;">
+			</div>
+			<div class="clear"></div>
+			<div class="log"></div>
+		</div>
+		<p>Example 2: Roll the mouse over both one of the div's and the callback won't fire until a 1 second delay has passed. This allowed a gap in the middle to not cause an unwanted fire.</p>
+		<div class="example delayed">
+			<div class="box" style="background-color:indianred;">
+			</div>
+			<div class="gap"></div>
+			<div class="box" style="background-color:yellowgreen;">
+			</div>
+			<div class="clear"></div>
+			<div class="log"></div>
+		</div>
+	</body>
+</html>
