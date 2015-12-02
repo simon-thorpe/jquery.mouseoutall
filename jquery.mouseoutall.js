@@ -20,7 +20,11 @@
         allOut = allOut && out;
       });
       if (allOut) {
-        timer = setTimeout(callback, delay);
+        if (delay) {
+          timer = setTimeout(callback, delay);
+        } else {
+          callback();
+        }
       }
     };
 
